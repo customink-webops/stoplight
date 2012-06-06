@@ -28,7 +28,6 @@ task :prepare_sandbox do
   cp_r Dir.glob("{#{files.join(',')}}"), sandbox_path
 end
 
-
 private
 def sandbox_path
   File.join(File.dirname(__FILE__), %w(tmp cookbooks cookbook))
