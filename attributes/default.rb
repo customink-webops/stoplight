@@ -2,7 +2,11 @@ default['stoplight']['install_dir'] = '/opt'
 default['stoplight']['servers'] = [
   {
     'name' => 'stoplight',
-    'port' => '4567',
+    'apache' => {
+      'server_name' => 'stoplight.localhost',
+      'server_admin' => 'admin@localhost',
+      'port' => '80'
+    },
     'servers' => [
       {
         'type' => 'travis',

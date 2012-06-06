@@ -6,6 +6,8 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.2"
 
 depends "git"
+depends "apache2"
+depends "passenger_apache2"
 
 recipe "default", "Installs, configures, and runs a Stoplight application."
 
@@ -21,13 +23,23 @@ attribute "servers",
 
 attribute "servers[name]",
   :display_name => "Stoplight Name",
-  :description => "The name of this Stoplight",
+  :description => "The name of this Stoplight stored on the file system",
   :default => "stoplight"
 
-attribute "servers[port]",
+attribute "servers[apache][server_name]",
+  :display_name => "Server Name",
+  :description => "The Apache Server Name to respond to (FQDN)",
+  :default => "stoplight.local"
+
+attribute "servers[apache][server_admin]",
+  :display_name => "Server Admin",
+  :description => "The Apache Server Admin",
+  :default => "admin@localhost"
+
+attribute "servers[apache][port]",
   :display_name => "Stoplight Port",
   :description => "The port used by this Stoplight",
-  :default => "4567"
+  :default => "80"
 
 attribute "servers[servers]",
   :display_name => "Servers",

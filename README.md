@@ -31,7 +31,9 @@ Attributes
 * `default['stoplight']['install_dir']` - Location where the Stoplight application will run
 * `default['stoplight']['servers']` - An array of Stoplight configuration instances
 * `default['stoplight']['servers']['name']` - The name of this Stoplight
-* `default['stoplight']['servers']['port']` - The port used by this Stoplight
+* `default['stoplight']['servers']['apache']['port']` - The port used by this Stoplight
+* `default['stoplight']['servers']['apache']['server_name']` - The apache server name
+* `default['stoplight']['servers']['apache']['server_admin']` - The apache server admin
 * `default['stoplight']['servers']['servers']` - An array of servers (providers) that this Stoplight should watch
 * `default['stoplight']['servers']['servers']['url']` - The URL for this build server
 * `default['stoplight']['servers']['servers']['username']` - The login for this server (optional)

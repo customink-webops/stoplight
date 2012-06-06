@@ -1,0 +1,21 @@
+<VirtualHost *:<%= @apache['port']%>>
+  ServerAdmin <%= @apache['server_admin'] %>
+  ServerName <%= @apache['server_name'] %>
+  DocumentRoot <%= @install_dir %>/<%= @server['name'] %>
+
+  RailsBaseURI /
+  RailsEnv production
+
+  <Directory <%= @install_dir %>/<%= @server['name'] %>>
+    Allow from all
+    Options -MultiViews
+  </Directory>
+
+  ErrorLog /var/log/apache2/<%= @server['name'] %>-error.log
+  CustomLog /var/log/apache2/<%= @server['name'] %>access.log combined
+
+  # Possible values include: debug, info, notice, warn, error, crit, alert, emerg.
+  LogLevel warn
+
+  ServerSignature On
+</VirtualHost>

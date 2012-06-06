@@ -18,6 +18,7 @@
 #
 
 include_recipe 'git'
+include_recipe 'stoplight::apache2'
 
 gem_package 'bundler'
 
