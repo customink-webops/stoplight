@@ -20,7 +20,6 @@ task :knife do
   sh "bundle exec knife cookbook test cookbook -o #{sandbox_path}/../"
 end
 
-desc "Prepare the cookbook sandbox"
 task :prepare_sandbox do
   files = %w{*.md *.rb attributes definitions files providers recipes resources templates}
 

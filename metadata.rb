@@ -6,7 +6,6 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.2"
 
 depends "git"
-depends "apache2"
 depends "passenger_apache2"
 
 recipe "default", "Installs, configures, and runs a Stoplight application."

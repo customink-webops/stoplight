@@ -18,53 +18,58 @@
 #
 
 include_recipe 'git'
-include_recipe 'stoplight::apache2'
+include_recipe 'passenger_apache2'
+include_recipe 'passenger_apache2::mod_rails'
 
 gem_package 'bundler'
 
+apache_site '000-default' do
+  enable false
+end
+
 node['stoplight']['servers'].each do |server|
-  install_dir = [ node['stoplight']['install_dir'], server['name'] ].join('/')
+  server_dir = [ node['stoplight']['install_dir'], server['name'] ].join('/')
 
-  execute 'Stop the application server' do
-    command "if [ -f #{install_dir}/tmp/server.pid ]; then sudo kill --quiet -9 `cat #{install_dir}/tmp/server.pid`; fi; exit 0"
-  end
-
-  execute 'Remove existing Stoplight instance' do
-    command "rm -rf #{install_dir}"
-  end
-
-  directory install_dir do
+  directory server_dir do
     recursive true
+    owner node['apache']['user']
+    group node['apache']['group']
   end
 
-  execute 'Clone the Stoplight repository' do
-    cwd install_dir
-    command 'git clone https://github.com/customink/stoplight.git .'
+  git server_dir do
+    repository 'git://github.com/customink/stoplight.git'
+    reference 'master'
+    enable_submodules true
+    user node['apache']['user']
+    group node['apache']['group']
+    action :sync
   end
 
   execute 'Bundle install application dependencies' do
-    cwd install_dir
+    cwd server_dir
     command 'bundle install'
   end
 
-  template "#{install_dir}/config/servers.yml" do
+  template "#{server_dir}/config/servers.yml" do
     source 'config/servers.yml.erb'
-    owner 'root'
-    group 'root'
+    owner node['apache']['user']
+    group node['apache']['group']
     variables(
       :servers => server['servers']
     )
   end
 
-  %w(log tmp).each do |dir|
-    execute "Create the #{dir} directory" do
-      cwd install_dir
-      command "mkdir ./#{dir}"
-    end
+  template "#{node['apache']['dir']}/sites-available/#{server['name']}" do
+    source 'apache2/site.erb'
+    mode 0644
+    variables(
+      :server_dir => server_dir,
+      :server => server
+    )
+    notifies :reload, 'service[apache2]'
   end
 
-  execute 'Launch Stoplight' do
-    cwd install_dir
-    command "sudo bundle exec rackup #{install_dir}/config.ru --port #{server['port']} --daemonize --pid #{install_dir}/tmp/server.pid"
+  apache_site server['name'] do
+    enable true
   end
 end
