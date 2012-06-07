@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.1.3
+
+* Use apache and passenger for deployment
+
 ### v0.1.2
 
 * Actually kill server process if it exists
