@@ -67,7 +67,6 @@ node['stoplight']['servers'].each do |server|
       :server => server
     )
     notifies :reload, 'service[apache2]'
-    notifies :reload,
   end
 
   apache_site server['name'] do
