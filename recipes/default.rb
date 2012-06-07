@@ -67,9 +67,16 @@ node['stoplight']['servers'].each do |server|
       :server => server
     )
     notifies :reload, 'service[apache2]'
+    notifies :reload,
   end
 
   apache_site server['name'] do
     enable true
+  end
+
+  execute 'Restart passenger' do
+    cwd server_dir
+    command 'touch tmp/restart.txt'
+    action :nothing
   end
 end

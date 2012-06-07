@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.1.4
+
+* Restart passenger on deploy
+
 ### v0.1.3
 
 * Use apache and passenger for deployment
