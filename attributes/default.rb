@@ -10,11 +10,11 @@ default['stoplight']['servers'] = [
     'servers' => [
       {
         'type' => 'travis',
-        'url' => 'http://travis-ci.org/repositories.json'
+        'url' => 'http://travis-ci.org'
       },
       {
         'type' => 'jenkins',
-        'url' => 'http://ci.jenkins-ci.org/cc.xml'
+        'url' => 'http://ci.jenkins-ci.org'
       }
     ]
   }
