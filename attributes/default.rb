@@ -19,3 +19,6 @@ default['stoplight']['servers'] = [
     ]
   }
 ]
+
+default['stoplight']['repo']['url'] = 'https://github.com/customink-webops/stoplight.git'
+default['stoplight']['repo']['branch'] = 'master'
