@@ -37,8 +37,8 @@ node['stoplight']['servers'].each do |server|
   end
 
   git server_dir do
-    repository node['stoplight']['repo']['url']
-    reference node['stoplight']['repo']['branch'] 
+    repository node['stoplight']['repo']
+    reference node['stoplight']['revision'] 
     enable_submodules true
     user node['apache']['user']
     group node['apache']['group']

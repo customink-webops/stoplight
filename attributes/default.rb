@@ -20,5 +20,6 @@ default['stoplight']['servers'] = [
   }
 ]
 
-default['stoplight']['repo']['url'] = 'git://github.com/customink/stoplight.git'
-default['stoplight']['repo']['branch'] = 'master'
+default['stoplight']['repo'] = 'git://github.com/customink/stoplight.git'
+default['stoplight']['revision'] = 'master'
+
