@@ -37,8 +37,8 @@ node['stoplight']['servers'].each do |server|
   end
 
   git server_dir do
-    repository 'git://github.com/customink/stoplight.git'
-    reference 'master'
+    repository node['stoplight']['repo']
+    reference node['stoplight']['revision'] 
     enable_submodules true
     user node['apache']['user']
     group node['apache']['group']
