@@ -2,7 +2,8 @@
 # Cookbook Name:: stoplight
 # Recipe:: default
 #
-# Copyright 2012, CustomInk, LLC
+# Copyright 2012-2013, Seth Vargo (sethvargo@gmail.com)
+# Copyright 2012-2013, CustomInk, LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,7 +39,7 @@ node['stoplight']['servers'].each do |server|
 
   git server_dir do
     repository node['stoplight']['repo']
-    reference node['stoplight']['revision'] 
+    reference node['stoplight']['revision']
     enable_submodules true
     user node['apache']['user']
     group node['apache']['group']

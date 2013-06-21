@@ -1,1 +1,6 @@
 tmp
+.chef
+test
+spec
+.kitchen/
+.kitchen.local.yml

@@ -1,0 +1,29 @@
+---
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+
+platforms:
+  - name: ubuntu-12.04
+    driver_config:
+      box: opscode-ubuntu-12.04
+      box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+    run_list:
+      - recipe[apt]
+  - name: ubuntu-10.04
+    driver_config:
+      box: opscode-ubuntu-10.04
+      box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
+    run_list:
+      - recipe[apt]
+
+suites:
+  - name: default
+    run_list:
+      - recipe[rvm::system]
+      - recipe[stoplight::default]
+    attributes:
+      rvm:
+        default_ruby: '1.9.3'
+        rubies:
+          - 1.9.3

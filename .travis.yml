@@ -1,7 +1,9 @@
 language: ruby
+bundler_args: --without integration
 rvm:
   - 1.9.2
   - 1.9.3
+before_script:
+  - bundle exec berks install --path vendor/cookbooks --except integration
 script:
-  - bundle exec rake knife
-  - bundle exec rake foodcritic
+  - bundle exec "strainer test --except kitchen"

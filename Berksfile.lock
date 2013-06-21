@@ -1,0 +1,51 @@
+{
+  "sha": "cc315908ad4a45fc93de8ba77a0d65be94417ddd",
+  "sources": {
+    "stoplight": {
+      "path": "."
+    },
+    "apt": {
+      "locked_version": "1.10.0"
+    },
+    "yum": {
+      "locked_version": "2.3.0"
+    },
+    "rvm": {
+      "locked_version": "0.9.1",
+      "git": "git://github.com/fnichol/chef-rvm.git",
+      "ref": "7038fb8c518d0d7785767de215b1ae463f237973"
+    },
+    "git": {
+      "locked_version": "2.5.2"
+    },
+    "dmg": {
+      "locked_version": "1.1.0"
+    },
+    "build-essential": {
+      "locked_version": "1.4.0"
+    },
+    "windows": {
+      "locked_version": "1.10.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "runit": {
+      "locked_version": "1.1.4",
+      "constraint": ">= 1.0.0"
+    },
+    "passenger_apache2": {
+      "locked_version": "2.0.2"
+    },
+    "apache2": {
+      "locked_version": "1.6.6",
+      "constraint": ">= 1.0.4"
+    },
+    "java": {
+      "locked_version": "1.11.6"
+    },
+    "chef_gem": {
+      "locked_version": "0.1.0"
+    }
+  }
+}
