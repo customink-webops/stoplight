@@ -1,6 +1,8 @@
-<VirtualHost *:<%= @server['apache']['port'] %>>
+<VirtualHost *:<%= @server['apache'].has_key?('port') ? @server['apache']['port'] : 80 %>>
   ServerName <%= @server['apache']['server_name'] %>
-  ServerAdmin <%= @server['apache']['server_admin'] %>
+  <% if @server['apache'].has_key?('server_admin') %>
+    ServerAdmin <%= @server['apache']['server_admin'] %>
+  <% end %>
   DocumentRoot <%= @server_dir %>/public
 
   <Directory <%= @server_dir %>/public>
